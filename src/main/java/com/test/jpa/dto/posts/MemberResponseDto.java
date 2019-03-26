@@ -1,10 +1,9 @@
 package com.test.jpa.dto.posts;
 
 import com.test.jpa.common.DateUtils;
+import com.test.jpa.domain.member.Member;
 import com.test.jpa.domain.posts.Posts;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,16 +13,22 @@ import java.util.Optional;
  * Created by kiseokhong on 2019. 3. 10..
  */
 @Getter
-public class PostsResponseDto {
-    private Long id;
-    private String title;
-    private String author;
+public class MemberResponseDto {
+    private Long no;
+    private String id;
+    private String password;
+    private String name;
+    private String sex;
+    private String email;
     private String modifiedDate;
 
-    public PostsResponseDto(Posts entity) {
+    public MemberResponseDto(Member entity) {
+        no = entity.getNo();
         id = entity.getId();
-        title = entity.getTitle();
-        author = entity.getAuthor();
+        password = entity.getPassword();
+        name = entity.getName();
+        sex = entity.getSex();
+        email = entity.getEmail();
         modifiedDate = DateUtils.toStringDateTime(entity.getModifiedDate());
     }
 
