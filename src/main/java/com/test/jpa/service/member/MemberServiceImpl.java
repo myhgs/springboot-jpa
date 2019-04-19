@@ -1,14 +1,14 @@
 package com.test.jpa.service.member;
 
+import com.test.jpa.domain.member.Member;
 import com.test.jpa.domain.member.MemberRepository;
-import com.test.jpa.dto.posts.MemberRequestDto;
-import com.test.jpa.dto.posts.MemberResponseDto;
+import com.test.jpa.dto.member.MemberRequestDto;
+import com.test.jpa.dto.member.MemberResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 /**
@@ -22,13 +22,14 @@ public class MemberServiceImpl implements MemberService{
     MemberRepository memberRepository;
 
     @Override
-    public Long save(MemberRequestDto dto) {
-        return memberRepository.save(dto.toEntity()).getNo();
+    public Member save(MemberRequestDto dto) {
+        return memberRepository.save(dto.toEntity());
     }
 
     @Override
     public List<MemberResponseDto> list() {
-        return memberRepository.findAllMember()
+        return memberRepository.findAll()
+                .stream()
                 .map(MemberResponseDto::new)
                 .collect(Collectors.toList());
     }

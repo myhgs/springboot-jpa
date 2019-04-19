@@ -1,13 +1,11 @@
-package com.test.jpa.dto.posts;
+package com.test.jpa.dto.member;
 
 import com.test.jpa.common.DateUtils;
+import com.test.jpa.domain.board.Board;
 import com.test.jpa.domain.member.Member;
-import com.test.jpa.domain.posts.Posts;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
+import java.util.List;
 
 /**
  * Created by kiseokhong on 2019. 3. 10..
@@ -21,6 +19,8 @@ public class MemberResponseDto {
     private String sex;
     private String email;
     private String modifiedDate;
+    private List<Board> boardList;
+
 
     public MemberResponseDto(Member entity) {
         no = entity.getNo();
@@ -30,6 +30,7 @@ public class MemberResponseDto {
         sex = entity.getSex();
         email = entity.getEmail();
         modifiedDate = DateUtils.toStringDateTime(entity.getModifiedDate());
+        boardList = entity.getBoardList();
     }
 
 }

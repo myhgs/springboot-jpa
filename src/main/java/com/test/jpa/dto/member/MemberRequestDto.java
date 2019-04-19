@@ -1,4 +1,4 @@
-package com.test.jpa.dto.posts;
+package com.test.jpa.dto.member;
 
 import com.test.jpa.domain.member.Member;
 import lombok.Getter;
